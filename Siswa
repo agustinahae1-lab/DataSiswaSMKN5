@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buku Kenangan Kelas - SMK TI Karya Utama</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c5aa0;
+            --secondary-color: #4a7bc2;
+            --accent-color: #ffcc5c;
+            --light-color: #f5f7fa;
+            --dark-color: #333;
+            --text-color: #444;
+            --border-color: #dce1e8;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f8fafc;
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 20px 20px;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .year {
+            background-color: var(--accent-color);
+            color: #333;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 500;
+            display: inline-block;
+            margin-top: 15px;
+        }
+        
+        .student-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .student-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-color);
+            height: 100%;
+        }
+        
+        .student-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .student-header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .student-id {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .student-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .student-class {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        .student-body {
+            padding: 20px;
+        }
+        
+        .info-row {
+            display: flex;
+            margin-bottom: 12px;
+            align-items: flex-start;
+        }
+        
+        .info-label {
+            width: 130px;
+            font-weight: 500;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        
+        .info-value {
+            flex: 1;
+            font-size: 0.9rem;
+        }
+        
+        .hope-box {
+            background-color: #f0f7ff;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+            margin-top: 10px;
+            font-style: italic;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        
+        .empty-field {
+            color: #999;
+            font-style: italic;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 25px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 12px;
+            font-size: 0.9rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+        
+        .class-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 25px 0;
+        }
+        
+        .filter-btn {
+            padding: 8px 18px;
+            background-color: white;
+            border: 2px solid var(--border-color);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover {
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+        }
+        
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .no-students {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            color: #777;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 10px;
+        }
+        
+        .page-btn {
+            padding: 8px 15px;
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .page-btn:hover {
+            background-color: var(--light-color);
+        }
+        
+        .page-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .search-box {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .search-input {
+            width: 100%;
+            max-width: 500px;
+            padding: 12px 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 30px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(74, 123, 194, 0.2);
+        }
+        
+        .stats {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .student-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            header {
+                padding: 20px;
+            }
+            
+            .info-row {
+                flex-direction: column;
+            }
+            
+            .info-label {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            
+            .student-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-book-open"></i> Buku Kenangan Kelas</h1>
+            <div class="subtitle">SMK Teknologi Informasi Karya Utama</div>
+            <div class="year">Tahun Ajaran 2025/2026</div>
+        </header>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-value" id="totalStudents">100</div>
+                <div class="stat-label">Total Siswa</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="totalClasses">12</div>
+                <div class="stat-label">Kelas</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="currentPage">1</div>
+                <div class="stat-label">Halaman</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="displayCount">12</div>
+                <div class="stat-label">Siswa Ditampilkan</div>
+            </div>
+        </div>
+        
+        <div class="search-box">
+            <input type="text" class="search-input" id="searchInput" placeholder="Cari nama siswa, kelas, atau ID...">
+        </div>
+        
+        <div class="class-filter" id="classFilter">
+            <!-- Filter kelas akan diisi oleh JavaScript -->
+        </div>
+        
+        <main>
+            <div class="student-grid" id="studentContainer">
+                <!-- Data siswa akan dimuat di sini -->
+            </div>
+            
+            <div class="pagination" id="pagination">
+                <!-- Pagination akan diisi oleh JavaScript -->
+            </div>
+        </main>
+        
+        <footer>
+            <div class="footer-logo">SMK TI KARYA UTAMA</div>
+            <p>Buku Kenangan Kelas - Tahun Ajaran 2025/2026</p>
+            <p>Jl. Pendidikan No. 123, Kota Ilmu, Indonesia</p>
+            <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.8;">© 2026 - Dibuat dengan kenangan yang tak terlupakan</p>
+        </footer>
+    </div>
+
+    <script>
+        // Data nama khas Indonesia - Versi Sederhana
+        const maleFirstNames = [
+            "Ahmad", "Muhammad", "Abdul", "Budi", "Joko", "Eka", "Fajar", "Hendra", "Iwan", "Johan",
+            "Rizky", "Taufik", "Umar", "Wahyu", "Yudi", "Zaki", "Bima", "Eko", "Gandi", "Indra",
+            "Pandu", "Rama", "Toni", "Adi", "Bayu", "Candra", "Dodi", "Fitra", "Gilang", "Hilman",
+            "Irfan", "Krisna", "Lukman", "Maman", "Oman", "Rendi", "Santo", "Teguh", "Vero", "Wawan",
+            "Yoga", "Ade", "Bambang", "Darma", "Fadli", "Gunawan", "Heri", "Jemmy", "Kurnia", "Mega"
+        ];
+        
+        const femaleFirstNames = [
+            "Siti", "Dewi", "Rina", "Putri", "Sari", "Ayu", "Citra", "Dian", "Fani", "Hana",
+            "Juli", "Kiki", "Lia", "Mila", "Nanda", "Siska", "Vina", "Yanti", "Zulfa", "Maya",
+            "Nina", "Oki", "Qori", "Umi", "Widi", "Cici", "Erna", "Ika", "Lestari", "Novi",
+            "Rahma", "Tika", "Wulan", "Yuni", "Zahra", "Amelia", "Bunga", "Cindy", "Dinda", "Elsa",
+            "Fiona", "Gita", "Intan", "Kartika", "Laras", "Mona", "Nadia", "Olga", "Putri", "Rani"
+        ];
+        
+        const lastNames = [
+            "Santoso", "Wijaya", "Pratama", "Nugroho", "Putra", "Kurniawan", "Hadi", "Saputra",
+            "Yulianti", "Rahman", "Siregar", "Handoko", "Kusuma", "Setiawan", "Halim", "Irawan",
+            "Hermawan", "Suryadi", "Purnama", "Lesmana", "Maulana", "Hidayat", "Samosir", "Gunawan",
+            "Nasution", "Simanjuntak", "Hutagalung", "Sinaga", "Sihombing", "Lubis", "Situmorang",
+            "Purba", "Manurung", "Siahaan", "Silitonga", "Pangaribuan", "Sihotang", "Napitupulu",
+            "Pardede", "Saragih", "Ginting", "Tarigan", "Peranginangin", "Barus", "Sembiring"
+        ];
+        
+        const classNames = [
+            "X TKJ 1", "X TKJ 2", "X TKJ 3", "X TKJ 4",
+            "X RPL 1", "X RPL 2", "X RPL 3", "X RPL 4",
+            "X MM 1", "X MM 2", "X MM 3", "X MM 4",
+            "XI TKJ 1", "XI TKJ 2", "XI TKJ 3", "XI TKJ 4",
+            "XI RPL 1", "XI RPL 2", "XI RPL 3", "XI RPL 4",
+            "XI MM 1", "XI MM 2", "XI MM 3", "XI MM 4",
+            "XII TKJ 1", "XII TKJ 2", "XII TKJ 3",
+            "XII RPL 1", "XII RPL 2", "XII RPL 3",
+            "XII MM 1", "XII MM 2", "XII MM 3"
+        ];
+        
+        // Data pacar perempuan (untuk siswa laki-laki)
+        const femalePartners = [
+            "Saidatul Mudrika", "Hana Dwi Hanzah", "Sari Dewi", "Rini Andriani", "Dian Pertiwi", 
+            "Maya Sari", "Fitriani", "Rahma Sari", "Tika Wulandari", "Nina Hartati",
+            "Lia Amanda", "Mila Kurnia", "Putri Ayu", "Siska Wijaya", "Vina Melati",
+            "Yanti Permatasari", "Zahra Amanda", "Amelia Putri", "Bunga Citra", "Cindy Laura",
+            "Dinda Kirana", "Elsa Natalia", "Fiona Fitri", "Gita Gutawa", "Intan Permata",
+            "Kartika Sari", "Larasati", "Mona Ratuliu", "Nadia Zahra", "Olga Syahputra",
+            "Ayu Lestari", "Bella Natasha", "Citra Kirana", "Dewi Anggraini", "Eva Yuliana",
+            "Fani Susanti", "Gita Maharani", "Hesti Wijaya", "Indah Permatasari", "Jihan Aulia",
+            "Kania Putri", "Lestari Wulandari", "Mutiara Hati", "Nova Indah", "Olivia Tantri",
+            "Puspa Dewi", "Queen Victoria", "Rara Santoso", "Sofia Mariana", "Tiara Andini"
+        ];
+        
+        // Data pacar laki-laki (untuk siswa perempuan)
+        const malePartners = [
+            "Ahmad Yani", "Budi Santoso", "Eko Prasetyo", "Fajar Siddik", "Gilang Ramadan",
+            "Hendra Kurnia", "Irfan Bachdim", "Joko Widodo", "Krisna Mukti", "Lukman Hakim",
+            "Maman Suherman", "Nando Pratama", "Oki Setiana", "Pandu Winata", "Rama Pratama",
+            "Santo Nugroho", "Teguh Karya", "Udin Petot", "Wahyu Selow", "Yoga Pratama",
+            "Zainal Abidin", "Agus Salim", "Bambang Pamungkas", "Candra Wijaya", "Dodi Irawan",
+            "Erik Setiawan", "Fahri Hamzah", "Guntur Sukarno", "Hadi Nugroho", "Ivan Gunawan",
+            "Jefri Nichol", "Kevin Aprilio", "Lionel Wijaya", "Mario Teguh", "Nugraha Besoes",
+            "Oscar Lawalata", "Pandji Pragiwaksono", "Qomaruddin", "Rangga Umara", "Sandy Walsh",
+            "Tio Pakusadewo", "Ucok Baba", "Vino Bastian", "Wawan Sutrisno", "Xavier Miller",
+            "Yoga Prabowo", "Zulfikar Naghi", "Aditya Putra", "Bagus Pratama", "Chandra Lesmana"
+        ];
+        
+        // Data untuk orang yang dicintai (nama orang)
+        const lovedOneNames = [
+            ...femalePartners.slice(0, 35),
+            ...malePartners.slice(0, 35)
+        ];
+        
+        // Data keluarga
+        const familyLovedOnes = [
+            "Orang Tua", "Keluarga", "Ibu", "Ayah", "Adik", "Kakak", "Keluarga Besar",
+            "Nenek", "Kakek", "Saudara"
+        ];
+        
+        const hopes = [
+            "Berharap dapat terus menjaga hubungan baik dengan teman-teman, selalu solid bersama teman-teman sekelas, dan menjalani hari-hari sekolah dengan penuh kebersamaan. Semoga kenangan indah di masa sekolah selalu dikenang.",
+            "Ingin sukses di masa depan dan terus berkembang, membanggakan orang tua, tetap menjaga pertemanan, dan berkembang menjadi pribadi yang lebih baik. Semoga setelah lulus bisa melanjutkan ke perguruan tinggi yang diimpikan.",
+            "Bercita-cita menjadi programmer handal dan membanggakan orang tua. Semoga bisa lulus dengan nilai terbaik dan mendapatkan pekerjaan di perusahaan teknologi ternama.",
+            "Berharap bisa menjadi desainer grafis profesional dan memiliki studio sendiri. Ingin terus mengasah kreativitas dan bekerja sama dengan teman-teman untuk membuat proyek multimedia yang menginspirasi.",
+            "Semoga bisa menjadi network engineer yang sukses dan membantu memajukan teknologi di Indonesia. Ingin terus belajar dan berbagi ilmu dengan teman-teman.",
+            "Ingin lulus dengan nilai memuaskan, diterima di Politeknik Negeri pilihan, dan terus membina hubungan baik dengan teman-teman. Semoga persahabatan tetap terjalin meski setelah lulus nanti.",
+            "Bercita-cita menjadi software developer dan menciptakan aplikasi yang bermanfaat bagi banyak orang. Ingin terus belajar bahasa pemrograman baru dan mengikuti perkembangan teknologi.",
+            "Berharap bisa menjadi animator profesional dan bekerja di studio animasi ternama. Ingin hubungan dengan teman-teman tetap langgeng dan bisa membangun masa depan bersama setelah lulus sekolah.",
+            "Ingin menjadi teknisi komputer yang handal dan membuka usaha service komputer sendiri. Semoga ilmu yang didapat di sekolah bisa bermanfaat untuk masa depan.",
+            "Bercita-cita melanjutkan ke perguruan tinggi dan menjadi sarjana komputer. Ingin membahagiakan orang tua dengan prestasi yang diraih selama sekolah."
+        ];
+        
+        // Fungsi sederhana untuk menghasilkan nama acak
+        function generateRandomName(gender) {
+            const firstNames = gender === 'male' ? maleFirstNames : femaleFirstNames;
+            const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+            const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+            return `${firstName} ${lastName}`;
+        }
+        
+        // Fungsi untuk menghasilkan daftar nama unik
+        function generateUniqueNames(count, gender) {
+            const names = new Set();
+            const nameList = [];
+            
+            while (nameList.length < count) {
+                let name = generateRandomName(gender);
+                let attempts = 0;
+                
+                // Coba sampai dapat nama unik
+                while (names.has(name) && attempts < 50) {
+                    name = generateRandomName(gender);
+                    attempts++;
+                }
+                
+                // Jika tetap duplikat, tambah angka
+                if (names.has(name)) {
+                    name = `${name} ${nameList.length + 1}`;
+                }
+                
+                names.add(name);
+                nameList.push(name);
+ 
